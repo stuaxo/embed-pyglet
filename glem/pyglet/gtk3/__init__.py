@@ -39,40 +39,10 @@ class PygletWidget(EventDispatcher, Gtk.Box):
 
         self.pack_end(gl_area, True, True, 0)
 
-    def on_drawx(self):
+    def on_draw(self):
         print("self, on_draw")
         gl.glClearColor(128, 64, 0, 128)
         gl.glClear(gl.GL_COLOR_BUFFER_BIT)
-
-    def on_draw(self):
-        print("self, on_draw")
-        # Move the camera back a little.
-        # TODO(sam): When you want to start rotating the camera, this should move into on_draw,
-        # and there should be a call to gRotatef.
-        gl.glMatrixMode(gl.GL_MODELVIEW)
-        gl.glLoadIdentity()
-        gl.glTranslatef(0, 0, -6)
-        gl.glRotatef(0, 0, 0, 0)  # seems to rotate c degrees around a point x,y,z???
-
-        gl.glClearColor(0, 0, 0, 128)
-
-        #gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
-        gl.glClear(gl.GL_COLOR_BUFFER_BIT)
-        #cubeWindow.clear()
-
-        gl.glColor4f(1.0, 0, 0, 1.0)
-
-        graphics.draw_indexed(8, gl.GL_LINES, [0, 1, 1, 2, 2, 3, 3, 0,  # front square
-                                                             4, 5, 5, 6, 6, 7, 7, 4,  # back square
-                                                             0, 4, 1, 5, 2, 6, 3, 7],  # connectors
-                                     ('v3f', (-1, -1, 0,
-                                              1, -1, 0,
-                                              1, 1, 0,
-                                              -1, 1, 0,
-                                              -1, -1, -1,
-                                              1, -1, -1,
-                                              1, 1, -1,
-                                              -1, 1, -1)))
 
     def on_resize(self, width, height):
         """A default resize event handler.
