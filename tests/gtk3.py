@@ -1,4 +1,4 @@
-from pyglet.embed.gtk3 import PygletWidget
+from glem.pyglet.gtk3 import PygletWidget
 
 
 def run():
@@ -14,7 +14,7 @@ def run():
     def on_draw():
         print("widget.on_draw")
 
-    win.add(widget)`
+    win.add(widget)
     win.connect("delete-event", Gtk.main_quit)
     win.show_all()
     Gtk.main()
