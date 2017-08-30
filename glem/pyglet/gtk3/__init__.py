@@ -17,10 +17,6 @@ class PygletWidget(EventDispatcher, Gtk.Box):
 
             def run(*args, **kwargs):
                 if rearrange_args:
-                    print()
-                    print(signal)
-                    print(args_index)
-                    print(args)
                     args = [args[i] for i in args_index]
 
                 if rearrange_kwargs:
@@ -33,9 +29,6 @@ class PygletWidget(EventDispatcher, Gtk.Box):
 
         connect('render', self.on_draw, [])
         connect('resize', self.on_resize, [1, 2])
-
-        #gl_area.connect('render', lambda area, context: self.on_draw())
-        #gl_area.connect('resize', lambda area, width, height: self.on_resize(width, height))
 
         self.pack_end(gl_area, True, True, 0)
 
